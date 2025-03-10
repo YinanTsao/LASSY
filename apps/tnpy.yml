@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tnpy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tnpy
+  template:
+    metadata:
+      labels:
+        app: tnpy
+    spec:
+      containers:
+      - name: tnpy
+        image: yinantsao/tnpy:latest
+        resources:
+          requests:
+            cpu: "1"
+            memory: 4Gi
+          limits:
+            cpu: "1"
+            memory: 4Gi
+        ports:
+        - containerPort: 8081
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tnpy
+spec:
+  type: NodePort
+  selector:
+    app: tnpy
+  ports:
+    - protocol: TCP
+      port: 8081
+      nodePort: 31111
