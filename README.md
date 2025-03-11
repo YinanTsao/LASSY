@@ -189,9 +189,13 @@ The input data for pytess is specified in the `init_pytess.json` file as an exam
   "opti_pref": 1
 }
 ```
-One could use real network latencies, or simulate between each pair of user-site using 'tc'.
+Note that:
 
-Note that the service rate of applications vary in a small range, instead of a constant. make sure to have the lowest estimated service rate as redundancy for the best performance.
+- One could use real network latencies in the cluster, or simulation between each pair of user-site using 'tc'.
+
+- Service rate of applications vary in a small range, instead of a constant. make sure to have the lowest estimated service rate as redundancy for the best performance.
+
+- LASSY support 2 optimization goals: minimizing the resource slot or cost. Setup the "opti_pref" in input and also pricing for each site.
 
 ### Running the LASSY Script
 
