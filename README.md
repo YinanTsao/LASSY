@@ -33,22 +33,16 @@ Before running LASSY, ensure you have the following dependencies installed:
 2. **Install httperf on the client machine**
 
    ```bash
-   cd httperf-master
+   cd httperf-master \
    make && make install
    ```
 
 
 ## Usage
 
-### Running the LASSY Script
-
-To run the LASSY script, use the following command:
-
-```bash
-python LASSY.py
-```
-
 ### Kubernetes Deployment
+
+The deployment yaml file of the target application should be prepared. We offer 2 different applications as we used in our experiments, both are monolithic and single-threaded. Based on the same characteristics, other applications are also available for verification.
 
 #### Deploying thumbnailing application (tnpy)
 
@@ -75,10 +69,10 @@ spec:
         resources:
           requests:
             cpu: "1"
-            memory: 4Gi
+            memory: 1Gi
           limits:
             cpu: "1"
-            memory: 4Gi
+            memory: 1Gi
         ports:
         - containerPort: 8081
 
@@ -146,9 +140,11 @@ spec:
 
 ## Input Data
 
+The input data for LASSY should be defined in the following format:
+
 ### tnpy Input Data
 
-The input data for TNpy is specified in the `init_tnpy.json` file:
+The input data for tnpy is specified in the `init_tnpy.json` file:
 
 ```json
 {
@@ -172,7 +168,7 @@ The input data for TNpy is specified in the `init_tnpy.json` file:
 
 ### pytess Input Data
 
-The input data for PyTess is specified in the `init_pytess.json` file:
+The input data for pytess is specified in the `init_pytess.json` file:
 
 ```json
 {
@@ -192,4 +188,20 @@ The input data for PyTess is specified in the `init_pytess.json` file:
   "deployment_name": "tngo",
   "opti_pref": 1
 }
+```
+
+Note that the service rate of applications vary in a small range, instead of a constant. make sure to have the lowest estimated service rate as redundancy for the best performance.
+
+### Running the LASSY Script
+
+Change the theta for different percentage of the tail latency, here the preset is 99% percentile (P99)
+
+```python
+theta = 0.99
+```
+
+To run the LASSY script, use the following command:
+
+```bash
+python LASSY.py
 ```
