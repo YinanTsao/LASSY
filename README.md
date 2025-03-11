@@ -46,7 +46,7 @@ The deployment yaml file of the target application should be prepared. We offer 
 
 #### Deploying thumbnailing application (tnpy)
 
-To deploy the tnpy application, use the following Kubernetes configuration:
+To deploy the tnpy application, use the following K8s configuration:
 
 ```yaml
 apiVersion: apps/v1
@@ -93,7 +93,7 @@ spec:
 
 #### Deploying OCR application (pytess)
 
-To deploy the pytess application, use the following Kubernetes configuration:
+To deploy the pytess application, use the following K8s configuration:
 
 ```yaml
 apiVersion: apps/v1
@@ -144,7 +144,7 @@ The input data for LASSY should be defined in the following format:
 
 ### tnpy Input Data
 
-The input data for tnpy is specified in the `init_tnpy.json` file:
+The input data for tnpy is specified in the `init_tnpy.json` file as an example:
 
 ```json
 {
@@ -168,7 +168,7 @@ The input data for tnpy is specified in the `init_tnpy.json` file:
 
 ### pytess Input Data
 
-The input data for pytess is specified in the `init_pytess.json` file:
+The input data for pytess is specified in the `init_pytess.json` file as an example:
 
 ```json
 {
