@@ -1,8 +1,8 @@
-# LASSY
+# LASSY (Latency-Aware SLOs-Sufficing Scheduling System)
 
 ## Overview
 
-LASSY (Latency-Aware SLOs-Sufficing Scheduling System) is a novel scheduling system designed for cloud/edge computing environments. It addresses the challenge of network latency in cloud-hosted applications, particularly for latency-sensitive services such as Edge AI. By integrating queuing theory, LASSY predicts and optimizes end-to-end tail latency to ensure compliance with Service Level Objectives (SLOs).
+LASSY is a novel scheduling system designed for cloud/edge computing environments. It addresses the challenge of network latency in cloud-hosted applications, particularly for latency-sensitive services such as Edge AI. By integrating queuing theory, LASSY predicts and optimizes end-to-end tail latency to ensure compliance with Service Level Objectives (SLOs).
 
 Key features of LASSY include:
 
@@ -15,9 +15,13 @@ Key features of LASSY include:
 Before running LASSY, ensure you have the following dependencies installed:
 
 - **Python 3.7+** (Required to run the script)
-- **Gurobi Optimizer** (for optimization modeling). You can download it from the [Gurobi website](https://www.gurobi.com).
+- **Gurobi Optimizer** (for optimization modeling). You can download it from the [Gurobi website](https://www.gurobi.com), remember to get a license for large scale test.
 - **Kubernetes Cluster** (Required to deploy applications). For more information, visit the [Kubernetes website](https://kubernetes.io).
 - **httperf** (Required for performance testing). You can find more information on the [httperf website](https://linux.die.net/man/1/httperf).
+
+    IMPORTANT: To obtain correct results, it is necessary to run at most one httperf process per client machine. Also, there should be as few background processes as possible both on the client and server machines.
+
+
 ### Installation Instructions
 
 1. **Install Python dependencies**:
@@ -25,6 +29,14 @@ Before running LASSY, ensure you have the following dependencies installed:
    ```bash
    pip install gurobipy scipy
    ```
+
+2. **Install httperf on the client machine**
+
+   ```bash
+   cd httperf-master
+   make && make install
+   ```
+
 
 ## Usage
 
