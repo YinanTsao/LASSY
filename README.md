@@ -15,14 +15,9 @@ Key features of LASSY include:
 Before running LASSY, ensure you have the following dependencies installed:
 
 - **Python 3.7+** (Required to run the script)
-- **Required Python Libraries**:
-  - `gurobipy` (for optimization modeling)
-  - `scipy` (for scientific computing and optimization)
-  - `math`, `os`, `sys` (built-in modules for various functionalities)
-  - `json` (for handling input data)
-  - `decimal` (for high-precision calculations)
-  - `datetime` (for timestamp handling)
-
+- **Gurobi Optimizer** (for optimization modeling). You can download it from the [Gurobi website](https://www.gurobi.com).
+- **Kubernetes Cluster** (Required to deploy applications). For more information, visit the [Kubernetes website](https://kubernetes.io).
+- **httperf** (Required for performance testing). You can find more information on the [httperf website](https://linux.die.net/man/1/httperf).
 ### Installation Instructions
 
 1. **Install Python dependencies**:
@@ -41,25 +36,11 @@ To run the LASSY script, use the following command:
 python LASSY.py
 ```
 
-### Running the MatrixP Script
-
-To run the MatrixP script, use the following command:
-
-```bash
-sudo ./run_matrixp.sh -u <user> -r <rate> -s <service_ip> -p <port> -o <round> [repeat for multiple users]
-```
-
-Example:
-
-```bash
-sudo ./run_matrixp.sh -u u1 -r 50 -s 172.16.66.104 -p 31111 -o 1 -u u2 -r 100 -s 172.16.66.104 -p 31111 -o 1
-```
-
 ### Kubernetes Deployment
 
-#### Deploying TNpy
+#### Deploying thumbnailing application (tnpy)
 
-To deploy the TNpy application, use the following Kubernetes configuration:
+To deploy the tnpy application, use the following Kubernetes configuration:
 
 ```yaml
 apiVersion: apps/v1
@@ -104,9 +85,9 @@ spec:
       nodePort: 31111
 ```
 
-#### Deploying PyTess
+#### Deploying OCR application (pytess)
 
-To deploy the PyTess application, use the following Kubernetes configuration:
+To deploy the pytess application, use the following Kubernetes configuration:
 
 ```yaml
 apiVersion: apps/v1
@@ -153,7 +134,7 @@ spec:
 
 ## Input Data
 
-### TNpy Input Data
+### tnpy Input Data
 
 The input data for TNpy is specified in the `init_tnpy.json` file:
 
@@ -177,7 +158,7 @@ The input data for TNpy is specified in the `init_tnpy.json` file:
 }
 ```
 
-### PyTess Input Data
+### pytess Input Data
 
 The input data for PyTess is specified in the `init_pytess.json` file:
 
