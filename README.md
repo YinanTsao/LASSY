@@ -15,8 +15,8 @@ Key features of LASSY include:
 Before running LASSY, ensure you have the following dependencies installed:
 
 - **Python 3.7+** (Required to run the script)
-- **Gurobi Optimizer** (for optimization modeling). You can download it from the [Gurobi website](https://www.gurobi.com), remember to get a license for large scale test.
-- **Kubernetes Cluster** (Required to deploy applications). For more information, visit the [Kubernetes website](https://kubernetes.io).
+- **Gurobi Optimizer** (for optimization modeling). You can download it from the [Gurobi website](https://www.gurobi.com), A license is required for larger scale testing.
+- **Kubernetes Cluster** (Required to deploy applications). For more information, visit the [Kubernetes website](https://kubernetes.io). 
 - **httperf** (Required for performance testing). You can find more information on the [httperf website](https://linux.die.net/man/1/httperf).
 
     IMPORTANT: To obtain correct results, it is necessary to run at most one httperf process per client machine. Also, there should be as few background processes as possible both on the client and server machines.
