@@ -189,6 +189,7 @@ The input data for pytess is specified in the `init_pytess.json` file:
   "opti_pref": 1
 }
 ```
+One could use real network latencies, or simulate between each pair of user-site using 'tc'.
 
 Note that the service rate of applications vary in a small range, instead of a constant. make sure to have the lowest estimated service rate as redundancy for the best performance.
 
@@ -205,3 +206,20 @@ To run the LASSY script, use the following command:
 ```bash
 python LASSY.py
 ```
+
+LASSY will generate the placement plan indicating:
+
+- Number of instances should be deploy on each site
+- User-site mapping
+
+
+### Verification
+
+According to the placement plan, deploy the application and scale in/out the instance on each site to the indicated number, and then launch the httperf with '-e' since LASSY estimate the arrival rate follows an exponential (i.e., Poisson) distribution from user.
+
+Here's an example:
+
+```bash
+httperf --hog --server 0.0.0.0 --port 31111 --uri /pytess --add-header='Content-Type:application/json\n' --wsesslog 10,0,session_tnpy.txt --period e0.5
+```
+

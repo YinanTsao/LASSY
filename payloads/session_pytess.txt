@@ -1,0 +1,3 @@
+# Session file format
+
+/pytess method=POST contents='{\"data\":\"5\"}'\r\n 
